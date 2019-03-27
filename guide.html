@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/guide.css" />
+    <title>lyricsAPI</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="http://localhost:3000/" class="logo">
+        <img src="http://localhost:3000/images/logo">
+      </a>
+      <div class="header-text">lyricsAPI</div>
+    </div>
+    <div class="menu">
+      <a href="http://localhost:3000/about" class="menuleft">About</a>
+      <a href="http://localhost:3000/lyrics" class="menuleft">Lyrics</a>
+      <a href="http://localhost:3000/guide" class="menuleft">Guide</a>
+      <a href="http://localhost:3000/login" target="_blank" class="menuright">Admin</a>
+    </div>
+    <div class="wrapper">
+      <div class="row">
+        <div class="column">
+          <h2>Step 1</h2>
+          <p class="pcolor">Create a web page.</p>
+        </div>
+        <div class="column">
+          <h2>Step 2</h2>
+          <p class="pcolor">
+            Request data from our database by copying the following link:
+          </p>
+          <input type="text" value="http://localhost:3000/api/band_name" id="copyurl" class="copyurl" readonly>
+          <button onclick="copy()" class="copybtn">Copy</button>
+          <p class="pcolor">
+            Note that you need to replace the band_name with the desired band and separate
+            every word in the band name with _ character. You can use upper or lowecase.
+          </p>
+        </div>
+        <div class="column">
+          <h2>Step 3</h2>
+          <p class="pcolor">
+            Our node will return the data to you in JSON format.
+            Feel free to use it how ever you want!
+          </p>
+          <p class="pcolor">
+            Example:
+            <a href="http://localhost:3000/api/beast_in_black" target="_blank">http:/localhost:3000/api/beast_in_black</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+    <script>
+      function copy() {
+        let copyText = document.getElementById("copyurl");
+        copyText.select();
+        document.execCommand("copy");
+      }
+    </script>
+  </body>
+</html>

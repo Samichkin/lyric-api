@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/add.css" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="http://localhost:3000/admin" class="logo">
+        <img src="http://localhost:3000/images/key">
+      </a>
+      <div class="header-text">adminAPI</div>
+    </div>
+    <div class="menu">
+      <a href="http://localhost:3000/admin/add" class="menuleft">Add</a>
+      <a href="http://localhost:3000/admin/remove" class="menuleft">Remove</a>
+      <a href="http://localhost:3000/admin/logout" class="menuright">Logout</a>
+    </div>
+    <div class="wrapper">
+      <div class="row">
+        <div class="column">
+          <div class="album-form">
+      			<h2>add album</h2>
+      			<form action="http://localhost:3000/admin/add/album" method="POST" id="albumform">
+      				<input type="text" name="bandname" placeholder="BAND_NAME" required>
+      				<input type="text" name="albumname" placeholder="Album_Name" required>
+      				<input type="submit">
+      			</form>
+      		</div>
+        </div>
+        <div class="column">
+          <div class="song-form">
+            <h2>add song</h2>
+            <form action="http://localhost:3000/admin/add/song" method="POST" id="songform">
+              <input type="text" name="albumnamesong" placeholder="Album_Name" required>
+              <input type="text" name="songname" placeholder="Song_Name" required>
+              <input type="submit">
+            </form>
+          </div>
+        </div>
+        <div class="column">
+          <div class="lyric-area">
+            <h2>song lyrics</h2>
+            <textarea name="songlyrics" class="lyricarea" form="songform" id="lyricarea"></textarea>
+            <button name="clearbtn" class="clearbtn" id="clearbtn">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+      $('#clearbtn').click(function() {
+        $('#albumform').trigger('reset');
+        $('#songform').trigger('reset');
+        $('#lyricarea').val('');
+      });
+
+    </script>
+  </body>
+</html>

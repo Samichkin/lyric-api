@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/lyrics.css" />
+    <title>lyricsAPI</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="http://localhost:3000/" class="logo">
+        <img src="http://localhost:3000/images/logo">
+      </a>
+      <div class="header-text">lyricsAPI</div>
+    </div>
+    <div class="menu">
+      <a href="http://localhost:3000/about" class="menuleft">About</a>
+      <a href="http://localhost:3000/lyrics"class="menuleft">Lyrics</a>
+      <a href="http://localhost:3000/guide" class="menuleft">Guide</a>
+      <a href="http://localhost:3000/login" target="_blank" class="menuright">Admin</a>
+    </div>
+    <div class="wrapper">
+      <div class="row">
+        <div class="column">
+          <h2>Select Artist</h2>
+          <div class="dd">
+            <select class="ddartist" id="ddartist">
+              <option disabled selected value> -- Select Artist -- </option>
+            </select>
+          </div>
+          <h2>Select Album</h2>
+          <div class="dd">
+            <select class="ddalbum" id="ddalbum">
+              <option disabled selected value> -- Select Album -- </option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <h2>Select Song</h2>
+          <div class="dd">
+            <select class="ddsong" id="ddsong">
+              <option disabled selected value> -- Select Song -- </option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="songname" id="songname"></h2>
+          <p class="songlyrics" id="songlyrics">
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      let myArr;
+      let song;
+
+      $(document).ready(function() {
+        updateArtists();
+      });
+
+      $('#ddartist').on('change', function() {
+        let value = $(this).val();
+          getAlbum(value);
+      });
+
+      $('#ddalbum').on('change', function() {
+        let value = $(this).val();
+          getSong(value);
+      });
+
+      $('#ddsong').on('change', function() {
+        let value = $(this).val();
+        document.getElementById("songlyrics").innerHTML = value.replace(/\n/g, "<br />");
+        document.getElementById("songname").innerHTML = $("#ddsong option:selected").text();
+      });
+
+      function updateArtists() {
+        $.getJSON("http://localhost:3000/api/update", function(data) {
+          let $dropdown = $("#ddartist");
+          $.each(data, function() {
+            $dropdown.append($("<option />").val(this.bandName).text(parseText(this.bandName)));
+          });
+          var usedNames = {};
+          $("#ddartist > option").each(function () {
+            if (usedNames[this.value]) {
+              $(this).remove();
+            } else {
+              usedNames[this.value] = this.text;
+            }
+          });
+        });
+      }
+
+      function getAlbum(artistname) {
+        $.getJSON("http://localhost:3000/api/" + artistname, function(data) {
+          myArr = data;
+          let $dropdown = $("#ddalbum");
+          $("#ddalbum").empty().append("<option disabled='disabled' SELECTED> -- Select Album -- </option>");
+          $.each(myArr, function() {
+            $dropdown.append($("<option />").val(this.albumName).text(parseText(this.albumName)));
+          });
+          var usedNames = {};
+          $("#ddalbum > option").each(function () {
+            if (usedNames[this.value]) {
+              $(this).remove();
+            } else {
+              usedNames[this.value] = this.text;
+            }
+          });
+        });
+      }
+
+      function getSong(albumname) {
+        let $dropdown = $("#ddsong");
+        $("#ddsong").empty().append("<option disabled='disabled' SELECTED> -- Select Song -- </option>");
+        $.each(myArr, function() {
+          if (this.albumName.localeCompare(albumname) == 0) {
+            $dropdown.append($("<option />").val(this.songLyrics).text(parseText(this.songName)));
+          }
+        });
+      }
+
+      function parseText(text) {
+        return text.replace(/_/g, " ");
+      }
+    </script>
+  </body>
+</html>

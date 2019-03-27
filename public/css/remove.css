@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Tahoma, Geneva, sans-serif;
+  background-image: url("http://localhost:3000/images/server");
+  background-size: 100%, auto, cover;
+  min-height: 100%;
+}
+.header {
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+.header a {
+  float: left;
+  padding: 12px;
+}
+.header-text {
+  float: left;
+  padding-top: 25px;
+  font-size: 40px;
+}
+@media screen and (max-width: 980px) {
+.header a {
+  float: none;
+  display: block;
+  text-align: left;
+}
+.header-text {
+  float: none;
+}
+}
+.menu {
+  overflow: hidden;
+  background-color: #333;
+}
+.menu a {
+  display: block;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.menuleft {
+  float: left;
+}
+.menuright {
+  float: right;
+}
+.menu a:hover {
+  background-color: #FFFFFF;
+  color: black;
+}
+.wrapper {
+  padding: 5px;
+  max-width: 1280px;
+  width: 95%;
+  margin: 20px auto;
+}
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 5px 0;
+}
+.column {
+  background-color: #FFFFFF;
+  flex: 1;
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 10px;
+  position: relative;
+  min-height: 380px;
+  &:first-child { margin-left: 0; }
+  &:last-child { margin-right: 0; }
+}
+.pcolor {
+color: #696969;
+}
+@media screen and (max-width: 980px) {
+.row .column {
+  margin-bottom: 5px;
+  flex-basis: 40%;
+  &:nth-last-child(2) {
+    margin-right: 0;
+  }
+  &:last-child {
+    flex-basis: 100%;
+    margin: 0;
+  }
+}
+}
+@media screen and (max-width: 680px) {
+.row .column {
+  flex-basis: 100%;
+  margin: 0 0 5px 0;
+}
+}
+.footer {
+  background-color: #333;
+  color: #FFFFFF;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+.album-form {
+  width: 340px;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+.album-form h2 {
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+}
+.album-form input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  box-sizing:border-box;
+}
+.album-form input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+}
+.song-form {
+  width: 340px;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+.song-form h2 {
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+}
+.song-form input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  box-sizing:border-box;
+}
+.song-form input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+}
+.lyric-area {
+  width: 340px;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+.lyric-area h2 {
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+}
+.lyricarea {
+  width: 100%;
+  height: 110px;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  box-sizing:border-box;
+}
+.clearbtn {
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+}
+.clearbtndiv {
+  padding-top: 15px;
+}
